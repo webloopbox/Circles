@@ -25,7 +25,6 @@ const randomBetween = (min: number, max: number) => min + Math.floor(Math.random
 export const Board = () => {
 
   const { circlesList, createCircle, removeCircle } = useGlobalContext()
-  console.log('circlesList: ', circlesList);
 
   const handleCreate = () => {
     const r = randomBetween(0, 255);
