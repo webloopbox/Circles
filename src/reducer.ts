@@ -1,4 +1,12 @@
-export const reducer = (state, action) => {
+import { Circle } from "./models/circle";
+import { RootState } from "./models/rootState";
+
+type CircleAction = {
+    type: string,
+    payload: Circle
+}
+
+export const reducer = (state: RootState, action: CircleAction) => {
 
     if (action.type === "CREATE_CIRCLE") {
         const newCirclesList = state.circlesList

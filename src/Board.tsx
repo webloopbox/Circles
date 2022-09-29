@@ -1,7 +1,7 @@
 import { Box, Button } from "@mui/material";
 import { nanoid } from "nanoid";
-import { useEffect } from "react";
 import { useGlobalContext } from "./context";
+import { Circle } from "./models/circle";
 
 const controlStyles = {
   margin: '0 10px',
@@ -9,7 +9,7 @@ const controlStyles = {
   fontSize: '1rem'
 }
 
-const circleStyles = (color) => ({
+const circleStyles = (color: string) => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -20,20 +20,14 @@ const circleStyles = (color) => ({
   background: color
 })
 
-const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
+const randomBetween = (min: number, max: number) => min + Math.floor(Math.random() * (max - min + 1));
 
 export const Board = () => {
 
   const { circlesList, createCircle, removeCircle } = useGlobalContext()
   console.log('circlesList: ', circlesList);
 
-  useEffect(() => {
-
-  }, [])
-
   const handleCreate = () => {
-
-
     const r = randomBetween(0, 255);
     const g = randomBetween(0, 255);
     const b = randomBetween(0, 255);
@@ -43,13 +37,13 @@ export const Board = () => {
       id: nanoid(),
       color: randomColor
     }
-    createCircle(circle)
+    createCircle?.(circle)
   }
 
   return (
     <div className="board">
-      {circlesList.map((item) => {
-        return <Box key={item.id} className="board__circle" sx={circleStyles(item.color)}>
+      {circlesList.map((circle: Circle) => {
+        return <Box key={circle.id} className="board__circle" sx={circleStyles(circle.color)}>
           lorem ipsum
         </Box>
       })}
