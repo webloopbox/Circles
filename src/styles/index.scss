@@ -10,9 +10,9 @@ body {
     display: grid;
     gap: 5px;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    width: 100vw;
-    height: 100vh;
+    align-content: start;
+    width: 100%;
+    min-height: 100vh;
     padding: 5px;    
     box-sizing: border-box;
     &__controls {
