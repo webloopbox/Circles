@@ -6,7 +6,7 @@ import getTheme from './themes/base'
 
 interface Context {
     circlesList: Array<Circle>;
-    themeName: any;
+    themeName: string;
     createCircle: (circle: Circle) => void;
     removeCircle: () => void;
     changeTheme: (event: React.ChangeEvent<HTMLInputElement>) => void
