@@ -1,3 +1,4 @@
+import { Switch } from "@mui/material";
 import { Box, Button } from "@mui/material";
 import { nanoid } from "nanoid";
 import { useGlobalContext } from "./context";
@@ -7,6 +8,13 @@ const controlStyles = {
   margin: '0 10px',
   padding: '10px 20px',
   fontSize: '1rem'
+}
+
+const switchStyles = {
+  position: 'absolute',
+  left: '25px', 
+  top: '50%', 
+  transform: 'translateY(-50%)'
 }
 
 const circleStyles = (color: string) => ({
@@ -24,19 +32,19 @@ const randomBetween = (min: number, max: number) => min + Math.floor(Math.random
 
 export const Board = () => {
 
-  const { circlesList, createCircle, removeCircle } = useGlobalContext()
+  const { circlesList, createCircle, removeCircle, changeTheme, themeName } = useGlobalContext()
 
   const handleCreate = () => {
+
     const r = randomBetween(0, 255);
     const g = randomBetween(0, 255);
     const b = randomBetween(0, 255);
-    const randomColor = `rgb(${r},${g},${b})`;
 
     const circle = {
       id: nanoid(),
-      color: randomColor
+      color: `rgb(${r},${g},${b})`
     }
-    createCircle?.(circle)
+    createCircle(circle)
   }
 
   return (
@@ -49,6 +57,12 @@ export const Board = () => {
       <div className="board__controls">
         <Button variant="contained" className="board__create" sx={controlStyles} color='create' onClick={handleCreate}>Create</Button>
         <Button variant="contained" className="board__remove" sx={controlStyles} color='remove' onClick={removeCircle}>Delete</Button>
+        <Switch
+          checked={(themeName==="theme2") ? true : false}
+          onChange={(event) => changeTheme(event)}
+          inputProps={{ 'aria-label': 'controlled'}}
+          sx={switchStyles}
+        />
       </div>
     </div >
   );
