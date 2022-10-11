@@ -15,9 +15,9 @@ interface Context {
 const defaultState = {
     circlesList: [],
     themeName: localStorage.getItem('appTheme') || 'theme1',
-    createCircle: () => true,
-    removeCircle: () => true,
-    changeTheme: () => true
+    createCircle: () => undefined,
+    removeCircle: () => undefined,
+    changeTheme: () => undefined
 }
 
 const AppContext = React.createContext<Context>(defaultState)
