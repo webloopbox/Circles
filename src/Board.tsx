@@ -13,8 +13,7 @@ const controlStyles = {
 const switchStyles = {
   position: 'absolute',
   left: '25px', 
-  top: '50%', 
-  transform: 'translateY(-50%)'
+  bottom: '-55px',
 }
 
 const circleStyles = (color: string) => ({
